@@ -1,29 +1,32 @@
 import React from 'react'
 
-function Drawer() {
+function Drawer({handleCartOpen, items}) {
+
   return (
-    <div style={{display : 'none'}} className="overlay">
+    <div className="overlay">
         <div className="drawer d-flex flex-column">
-          <h2 className="d-flex justify-between mb-20">Cart <img className="removeBtn cu-p" src="img/btn-remove.svg" alt="remove" /></h2>
+          <h2 className="d-flex justify-between mb-20">Cart 
+            <img 
+              className="removeBtn cu-p" 
+              src="img/btn-remove.svg" 
+              alt="remove" 
+              onClick={handleCartOpen}
+            />
+          </h2>
 
           <div className="items flex">
-            <div className="cartItem d-flex align-center mb-20">
-              <img className="mr-20" width={70} height={70} src="img/1.jpg" alt="sneakers" />
-              <div className="mr-20">
-                <p className="mb-5">Мужские Кроссовки Nike Blazer Mid Suede</p>
-                <b>12 999 RUB</b>
-              </div>
-              <img className="removeBtn" src="img/btn-remove.svg" alt="remove" />
-            </div>
 
-            <div className="cartItem d-flex align-center mb-20">
-              <img className="mr-20" width={70} height={70} src="img/1.jpg" alt="sneakers" />
-              <div className="mr-20">
-                <p className="mb-5">Мужские Кроссовки Nike Blazer Mid Suede</p>
-                <b>12 999 RUB</b>
-              </div>
-              <img className="removeBtn" src="img/btn-remove.svg" alt="remove" />
+            {items.map(obj =>(
+              <div className="cartItem d-flex align-center mb-20">
+                <img className="mr-20" width={70} height={70} src={obj.img} alt="sneakers" />
+                <div className="mr-20">
+                  <p className="mb-5">{obj.name}</p>
+                  <b>{obj.price} RUB</b>
+                </div>
+                <img className="removeBtn" src="img/btn-remove.svg" alt="remove" />
             </div>
+            ))}
+
           </div>
 
           <div className="cartTotalBlock">
