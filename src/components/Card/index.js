@@ -5,6 +5,7 @@ function Card({name, price, img, onFavorite, onPlus}) {
   const {card, favorite} = styles
 
   const [isAdd, setIsAdd] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(false)
 
   const handleAdd = () =>{
     onPlus({name, img, price})
